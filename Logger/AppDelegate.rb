@@ -22,6 +22,8 @@ class AppDelegate
           while line = client.gets
             @data << [Time.now.to_s, line.chop]
             table_view.reloadData
+            
+            table_view.scrollRowToVisible(table_view.numberOfRows - 1) if table_view.numberOfRows > 0
           end
           client.close
         end
